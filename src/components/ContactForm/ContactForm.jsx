@@ -2,10 +2,9 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import css from 'components/ContactForm/ContactForm.module.css';
 // import PropTypes from 'prop-types';
-import { addContact } from 'redux/contactsSlice';
+import { addContact } from 'redux/operations';
 import { useRef } from 'react';
 import { nanoid } from '@reduxjs/toolkit';
-
 
 function ContactForm(props) {
   const dispatch = useDispatch();
@@ -31,7 +30,7 @@ function ContactForm(props) {
     }
 
     dispatch(
-      addContact({ name: contactName, number: contactNumber, id: nanoid() })
+      addContact({ name: contactName, phone: contactNumber, id: nanoid() })
     );
 
     contactNameRef.current.value = '';

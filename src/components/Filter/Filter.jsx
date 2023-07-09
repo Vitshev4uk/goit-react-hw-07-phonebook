@@ -6,16 +6,12 @@ import { useDispatch } from 'react-redux';
 import { filterContacts } from 'redux/contactsSlice';
 
 function Filter() {
-  // const contacts = useSelector(state => state.contacts.contacts);
-  // console.log(contacts);
-
   const dispatch = useDispatch();
 
   const filterNameRef = useRef();
 
   const handleInputValue = () => {
     const filterValue = filterNameRef.current.value;
-    // console.log(filterValue);
 
     dispatch(filterContacts(filterValue));
   };
