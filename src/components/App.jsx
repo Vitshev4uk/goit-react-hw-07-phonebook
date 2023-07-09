@@ -2,6 +2,7 @@ import React from 'react';
 import ContactForm from './ContactForm/ContactForm';
 import Filter from './Filter/Filter';
 import ContactList from './ContactList/ContactList';
+import ErrorPage from './ErrorPage/ErrorPage';
 import { useDispatch } from 'react-redux';
 import { fetchContacts } from 'redux/operations';
 import { useSelector } from 'react-redux';
@@ -16,6 +17,7 @@ function App() {
   }, [dispatch]);
 
   const isLoading = useSelector(state => state.isLoading);
+  const errorState = useSelector(state => state.error);
 
   return (
     <div>
@@ -38,7 +40,8 @@ function App() {
       </h2>
       <Filter />
       {isLoading && <b>Request in progress...</b>}
-      <ContactList />
+      {errorState === true ? <ErrorPage/> : <ContactList />}
+      {/* <ContactList /> */}
     </div>
   );
 }

@@ -9,7 +9,7 @@ const contactsSlice = createSlice({
     contacts: [],
     filter: '',
     isLoading: false,
-    error: null,
+    error: false,
   },
   reducers: {
     filterContacts(state, action) {
@@ -26,6 +26,8 @@ const contactsSlice = createSlice({
     },
     [fetchContacts.rejected](state, _) {
       state.isLoading = false;
+      state.error = true;
+      console.log(state.error)
     },
 
     [addContact.pending](state, _) {
@@ -37,6 +39,7 @@ const contactsSlice = createSlice({
     },
     [addContact.rejected](state, _) {
       state.isLoading = false;
+      state.error = true;
     },
 
     [deleteContact.pending](state, _) {
@@ -51,6 +54,7 @@ const contactsSlice = createSlice({
     },
     [deleteContact.rejected](state, _) {
       state.isLoading = false;
+      state.error = true;
     },
   },
 });
